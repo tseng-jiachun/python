@@ -1,9 +1,7 @@
-temp=input("請輸入溫度: ")
-temp=int(temp)
+temps =[25.1, 26.3, 24.8, 27.0]
 
-if temp >= 35:
-    print("過熱")
-elif temp > 20:
-    print("偏高")
-else:
-    print("正常")
+biggest = temps[0]
+for t in temps:
+    if t > biggest:
+        biggest = t
+print("最大:", biggest)
