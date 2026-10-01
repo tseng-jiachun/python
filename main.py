@@ -1,9 +1,9 @@
-temp =[25.1, 26.3, 24.8, 27.0]
+temp=input("請輸入溫度: ")
+temp=int(temp)
 
-total = 0
-for i in temp:
-    total += i
-    print(total)
-
-avg = total / len(temp)
-print("平均:", avg)
+if temp >= 35:
+    print("過熱")
+elif temp > 20:
+    print("偏高")
+else:
+    print("正常")
