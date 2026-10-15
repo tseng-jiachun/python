@@ -1,17 +1,20 @@
+sensors = [{"id":"A","temp":25.3},
+           {"id":"B","temp":31.0},
+           {"id":"C","temp":28.5}]
 
-sensor = [{"id":"A","temp":25},{"id":"B","temp":31.0},
-          {"id":"C","temp":28},{"id":"D","temp":35.2}]
+with open("data.csv","w") as f:
+    f.write("id,temp\n")
+    for s in sensors:
+        f.write(f"{s['id']},{s['temp']}\n")
 
-count = 0
-highest = sensor[0]
-total = 0
 
-for s in sensor:
-    total += s["temp"]
-    if s["temp"] > highest["temp"]:
-        highest = s
-    if s["temp"] > 30:
-        count += 1
-print(f"共{len(sensor)}顆，平均: {total/len(sensor):.2f}")
-print(f"最高: {highest['id']} ({highest['temp']})")
-print("超標(>30):", count)
+with open("data.csv","r") as f:
+    lines = f.readlines()
+
+total=0
+count=0
+for line in lines[1:]:
+    parts = line.strip().split(",")
+    total += float(parts[1])
+    count += 1
+print(f"平均{total/count:.2f}")
