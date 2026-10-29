@@ -1,12 +1,13 @@
-data=["25.1","壞","26.3","x","24.8"]
-e=[]
-count=0
-total=0
-for d in data:
+import statistics
+
+def adc_to_v(adc):
+    return adc / 4095 * 3.3
+
+row=["2048","3000","1024","壞"]
+volts=[]
+for r in row:
     try:
-        e.append(float(d))
-        count += 1
-        total += float(d)
+        volts.append(adc_to_v(float(r)))
     except ValueError:
-        print("跳過:",d)
-print(f"有效{count}筆,平均:{total/count:.2f}")
+        print("跳過",r)
+print(f"平均:{statistics.mean(volts):.2f} V")
